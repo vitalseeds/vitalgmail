@@ -1,0 +1,36 @@
+{
+  "timeZone": "Europe/London",
+  "dependencies": {
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/gmail.addons.current.message.readonly",
+    "https://www.googleapis.com/auth/gmail.addons.execute",
+    "https://www.googleapis.com/auth/script.external_request"
+  ],
+  "urlFetchWhitelist": [
+    "https://vitalseeds.co.uk/wp-json/wc/v3/"
+  ],
+  "addOns": {
+    "common": {
+      "name": "Vital Gmail",
+      "logoUrl": "https://vitalseeds.co.uk/wp-content/uploads/2018/06/cropped-VS_Logo_7.jpg",
+      "homepageTrigger": {
+        "runFunction": "onHomePage",
+        "enabled": true
+      },
+      "openLinkUrlPrefixes": [
+        "https://vitalseeds.co.uk/"
+      ]
+    },
+    "gmail": {
+      "contextualTriggers": [
+        {
+          "unconditional": {},
+          "onTriggerFunction": "onGmailMessage"
+        }
+      ]
+    }
+  }
+}
