@@ -33,7 +33,7 @@ function onHomePage() {
  * @return {CardService.Card} The card content.
  */
 function onGmailMessage( event ) {
-  if ( '' === getWooCommerceHost( false ) ) {
+  if ( ! getWooCommerceHost( false ) ) {
 	return buildErrorCard( 'Configuration Error', 'You need to configure the WOOCOMMERCE_HOST setting' );
   }
 
