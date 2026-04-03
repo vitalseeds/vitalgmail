@@ -58,6 +58,17 @@ The app will then appear in the internal Marketplace and can be installed via th
 ### Updating
 
 1. Make changes and `clasp push` (re-run `clasp login` first if you get an `invalid_grant` auth error)
-2. **Deploy → Manage deployments → edit → New version → Deploy**
+2. In the [Apps Script editor](https://script.google.com): **Deploy → Manage deployments → edit → New version → Deploy**
+
+Pushing code alone does not update the live add-on — you must publish a new version.
 
 Users receive updates automatically — no reinstall needed.
+
+### Testing changes during development
+
+Use a test deployment to see changes immediately after `clasp push`, without creating a new version each time:
+
+1. In the [Apps Script editor](https://script.google.com): **Deploy → Test deployments → Install**
+2. Open [Gmail](https://mail.google.com) — the add-on will run the latest pushed code on each reload
+
+Switch back to the versioned deployment for production use (test deployments are only visible to you).
