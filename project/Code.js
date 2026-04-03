@@ -8,8 +8,19 @@ function onHomePage() {
 
   builder.addSection(
     CardService.newCardSection()
-      .setHeader( 'Mini CRM for Woo in Gmail' )
+      .setHeader('No email is currently open')
       .addWidget( buildKeyValueWidget( 'Store URL', getWooCommerceHost() ) )
+      .addWidget( CardService.newTextInput()
+        .setFieldName( 'searchQuery' )
+        .setTitle( 'Search orders' )
+      )
+      .addWidget( CardService.newButtonSet()
+        .addButton( CardService.newTextButton()
+          .setText( 'Search orders' )
+          .setOnClickAction( CardService.newAction().setFunctionName( 'onSearchOrders' ) )
+        )
+        .addButton( buildTextButtonWidget( 'View all orders', getWooCommerceOrdersLink() ) )
+      )
   );
 
   if  ( ! areWooCommerceCredentialsConfigured() ) {
@@ -127,6 +138,18 @@ function buildCustomerCard( emailAddress, orderDataForEmailAddress ) {
       .addWidget(
         CardService.newTextParagraph()
           .setText( 'No orders for <b>' + emailAddress + '</b>' )
+      )
+      .addWidget( CardService.newTextInput()
+        .setFieldName( 'searchQuery' )
+        .setTitle( 'Search orders' )
+        .setValue( emailAddress )
+      )
+      .addWidget( CardService.newButtonSet()
+        .addButton( CardService.newTextButton()
+          .setText( 'Search orders' )
+          .setOnClickAction( CardService.newAction().setFunctionName( 'onSearchOrders' ) )
+        )
+        .addButton( buildTextButtonWidget( 'View all orders', getWooCommerceOrdersLink() ) )
       );
 
     builder.addSection( noOrdersSection );
@@ -342,6 +365,21 @@ function formatOrderStatus( orderStatus ) {
   }
 
   return '<b>' + getOrderStatusForDisplay( orderStatus ) + '</b>';
+}
+
+/**
+ * Action callback for the search orders input.
+ * Reads the search query from form inputs and opens the WooCommerce orders list filtered by that query.
+ *
+ * @param {Object} event
+ * @returns {CardService.ActionResponse}
+ */
+function onSearchOrders( event ) {
+  const searchQuery = ( event.formInputs.searchQuery ?? [] )[0] ?? '';
+  const url = getWooCommerceOrdersLink( searchQuery ? { s: searchQuery } : {} );
+  return CardService.newActionResponseBuilder()
+    .setOpenLink( CardService.newOpenLink().setUrl( url ) )
+    .build();
 }
 
 /**
