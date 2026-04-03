@@ -32,6 +32,9 @@ Generate key and secretat `WooCommerce → Settings → Advanced → REST API` i
 
 **Using clasp (recommended):**
 ```bash
+# First time, or if authentication has expired:
+clasp login
+
 cd project
 clasp push
 ```
@@ -54,7 +57,7 @@ The app will then appear in the internal Marketplace and can be installed via th
 
 ### Updating
 
-1. Make changes and `clasp push`
+1. Make changes and `clasp push` (re-run `clasp login` first if you get an `invalid_grant` auth error)
 2. **Deploy → Manage deployments → edit → New version → Deploy**
 
 Users receive updates automatically — no reinstall needed.
