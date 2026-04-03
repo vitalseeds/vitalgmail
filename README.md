@@ -15,3 +15,9 @@ See [deployment instructions](deployment.md). You should end up with an easily
 installable app in the google marketplace, under *Internal*
 
 Good luck! Sorry but I can't offer support setting this up.
+
+## License
+
+MIT License — free to use, modify, and distribute for any purpose.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. THE AUTHORS ACCEPT NO LIABILITY FOR ANY DAMAGES OR ISSUES ARISING FROM ITS USE.
