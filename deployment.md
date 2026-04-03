@@ -62,6 +62,8 @@ The app will then appear in the internal Marketplace and can be installed via th
 
 Pushing code alone does not update the live add-on — you must publish a new version.
 
+**Do not create a new deployment** — always edit the existing one (the deployment ID registered in GCP Marketplace SDK must stay the same). Creating a new deployment gives it a different ID, which the Marketplace won't use.
+
 Users receive updates automatically — no reinstall needed.
 
 ### Testing changes during development

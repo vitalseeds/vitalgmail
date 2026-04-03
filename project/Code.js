@@ -142,7 +142,6 @@ function buildCustomerCard( emailAddress, orderDataForEmailAddress ) {
       .addWidget( CardService.newTextInput()
         .setFieldName( 'searchQuery' )
         .setTitle( 'Search orders' )
-        .setValue( emailAddress )
       )
       .addWidget( CardService.newButtonSet()
         .addButton( CardService.newTextButton()
