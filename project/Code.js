@@ -6,9 +6,17 @@
 function onHomePage() {
   var builder = CardService.newCardBuilder();
 
+  var email = Session.getActiveUser().getEmail();
+  var firstName = email.split( '@' )[ 0 ].split( '.' )[ 0 ];
+  firstName = firstName.charAt( 0 ).toUpperCase() + firstName.slice( 1 );
+
   builder.addSection(
     CardService.newCardSection()
-      .setHeader( 'Mini CRM for Woo in Gmail' )
+      .setHeader( 'Hello ' + firstName )
+      .addWidget(
+        CardService.newTextParagraph()
+          .setText( 'No email is currently open' )
+      )
       .addWidget( buildKeyValueWidget( 'Store URL', getWooCommerceHost() ) )
   );
 
